@@ -1,6 +1,7 @@
 <template>
     <div class="welcome-wrap">
-        <img src="http://i1.buimg.com/1949/43ab520761604482.jpg" alt="">
+        {{ name }}
+        <!-- <img src="http://i1.buimg.com/1949/43ab520761604482.jpg" alt=""> -->
     </div>
 </template>
 

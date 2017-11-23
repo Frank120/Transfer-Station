@@ -2,6 +2,9 @@ let path = require('path');
 let webpack = require('webpack');
 let HtmlWebpackPlugin = require('html-webpack-plugin');
 let CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
+
+const publicPath = './';
+
 let config = {
     //入口文件配置
     entry: {
@@ -10,14 +13,18 @@ let config = {
     },
     //出口文件配置
     output: {
-        path: path.join(__dirname, 'dist'), 
-        publicPath: '/dist/',                
-        filename: 'js/[name].js',            
-        chunkFilename: 'js/[name].asyncChunk.js?'+new Date().getTime() 
+        path: path.resolve(__dirname, 'dist'), 
+        publicPath,
+        filename: 'js/[name].js',
+        chunkFilename: 'async-chunks/[name].js',
+        libraryTarget: 'umd'
     },
+
+    devtool: 'cheap-module-eval-source-map',
+    
     module: {
         //加载器
-        rules: [
+        loaders: [
             {
                 test: /\.vue$/,
                 loader: 'vue-loader',
@@ -55,9 +62,29 @@ let config = {
             },
             {
                 //图片加载器，雷同file-loader，更适合图片，可以将较小的图片转成base64，减少http请求
-                test: /\.(png|jpg|gif)$/,
-                loader: 'url-loader?limit=8192&name=images/[hash].[ext]'
-            }
+                test: /\.(png|jpg|gif|svg)$/,
+                include: [path.resolve(__dirname, 'src'), path.resolve(__dirname,'dist'), path.resolve(__dirname,'node_modules')],
+                loader: [{
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[ext]',
+                        outputPath: 'images',
+                        publicPath,
+                    },
+                }],
+            },
+            {
+                test: /\.(woof|woof2|eot|ttf|otf|)(\?[a-z0-9])?$/,
+                include: [path.resolve(__dirname, 'src'), path.resolve(__dirname, 'dist'), path.resolve(__dirname, 'node_modules')],
+                loader: [{
+                    loader: 'url-loader',
+                    options: {
+                        limit: Infinity,
+                        name : '/[name].[ext]/',
+                        outputPath: 'assets/fonts',
+                    },
+                }],
+            },
         ]
     },
     //插件
@@ -75,25 +102,23 @@ let config = {
         new CommonsChunkPlugin({
             name: 'vendors', 
             minChunks: 2, 
-            // children:true  //如果为true,那么公共组件的所有子依赖都将被选择进来
+            // children:true
         }),
     ],
     //使用webpack-dev-server，启动热刷新插件
     devServer: {
         contentBase: path.join(__dirname, "/"),
-        host: 'localhost',  //建议写IP地址，开发时候电脑的ip地址。localhost我不知道是幻觉还是怎样，有时候热刷新不灵敏
+        host: 'localhost',
         port: 9090, //默认9090
         inline: true, //可以监控js变化
-        hot: true//热启动
+        hot: true
     },
     //搜索路径变量
     resolve: {
-        // alias: {
-        //     vue: 'vue/dist/vue.js'
-        // },
+        alias: {
+            vue: 'vue/dist/vue.js'
+        },
         extensions:['.js','.scss','.vue','.json']
     }
 };
 module.exports = config; 
-
-console.log(config.entry.index);

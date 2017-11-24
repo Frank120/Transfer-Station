@@ -1,7 +1,8 @@
-let path = require('path');
-let webpack = require('webpack');
-let HtmlWebpackPlugin = require('html-webpack-plugin');
-let CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 
 const publicPath = './';
 
@@ -57,30 +58,25 @@ let config = {
                 loader: 'style-loader!css-loader!sass-loader'
             },
             {
-                test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
-                loader: 'file-loader'
-            },
-            {
-                //图片加载器，雷同file-loader，更适合图片，可以将较小的图片转成base64，减少http请求
-                test: /\.(png|jpg|gif|svg)$/,
-                include: [path.resolve(__dirname, 'src'), path.resolve(__dirname,'dist'), path.resolve(__dirname,'node_modules')],
+                test: /\.(png|svg|jpg|gif)$/,
+                include: [path.resolve(__dirname, 'src'), path.resolve(__dirname, 'dist'), path.resolve(__dirname, 'node_modules')],
                 loader: [{
                     loader: 'file-loader',
                     options: {
-                        name: '[name].[ext]',
+                        name: '/[name].[ext]',
                         outputPath: 'images',
                         publicPath,
                     },
                 }],
             },
             {
-                test: /\.(woof|woof2|eot|ttf|otf|)(\?[a-z0-9])?$/,
+                test: /\.(woff|woff2|eot|ttf|otf)(\?[a-z0-9]+)?$/,
                 include: [path.resolve(__dirname, 'src'), path.resolve(__dirname, 'dist'), path.resolve(__dirname, 'node_modules')],
                 loader: [{
                     loader: 'url-loader',
-                    options: {
+                     options: {
                         limit: Infinity,
-                        name : '/[name].[ext]/',
+                        name: '/[name].[ext]',
                         outputPath: 'assets/fonts',
                     },
                 }],
@@ -89,7 +85,6 @@ let config = {
     },
     //插件
     plugins: [
-        //webpack3.0的范围提升
         new webpack.optimize.ModuleConcatenationPlugin(),
         //打包生成html文件，并且将js文件引入进来
         new HtmlWebpackPlugin({
@@ -102,15 +97,14 @@ let config = {
         new CommonsChunkPlugin({
             name: 'vendors', 
             minChunks: 2, 
-            // children:true
         }),
     ],
     //使用webpack-dev-server，启动热刷新插件
     devServer: {
         contentBase: path.join(__dirname, "/"),
         host: 'localhost',
-        port: 9090, //默认9090
-        inline: true, //可以监控js变化
+        port: 9090,
+        inline: true,
         hot: true
     },
     //搜索路径变量

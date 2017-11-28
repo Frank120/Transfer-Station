@@ -28,12 +28,11 @@ const routerApp = new Vue({
     router
 }).$mount('#app');
 
-
 /**
  * loadFromlLocal()是读取本地缓存数据，具体common/js/store.js 查看
  */
 
-if(!loadFromLocal('gank', 'wecome', false)) {
+if (!loadFromLocal('gank', 'wecome', false)) {
     router.push('./wecome');
 }
 export default routerApp;

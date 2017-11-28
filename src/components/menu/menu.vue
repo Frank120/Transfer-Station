@@ -59,7 +59,7 @@ export default {
     };
 </script>
 
-<style lang="stylue" rel="stylesheet/stylue">
-    @import 'menu.styl';
+<style lang="stylus" rel="stylesheet/stylus">
+    @import './menu.styl';
 </style>
 

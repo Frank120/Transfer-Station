@@ -9,8 +9,8 @@
      path: '/',
      name: 'index',
      component(resolve) {
-         rqeuire.ensure(['./App.vue'], () => {
-             resolve(require('./App.vew'));
+            require.ensure(['./App.vue'], () => {
+                resolve(require('./App.vue'));
          });
      },
 
@@ -21,9 +21,9 @@
      path: '/wecome',
      name: 'wecome',
      component(resolve) {
-         require.ensure(['./components/wecome/wecome.vue'], () => {
-             resolve(require('./components/wecome/wecome.vue'));
-         });
+            require.ensure(['./components/wecome/wecome.vue'], () => {
+                resolve(require('./components/wecome/wecome.vue'));
+            });
      }
  }];
 

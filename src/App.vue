@@ -37,7 +37,7 @@ export default {
             this.detaileShow = false;
         }
     }
-}
+};
 </script>
 
 <style>

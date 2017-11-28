@@ -21,7 +21,7 @@ export default {
             savaToLocal('gank', 'wecome', true);
         }, 2000);
     }
-}
+};
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">

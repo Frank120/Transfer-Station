@@ -18,6 +18,7 @@
 
 <script type="text/ecmascript-6">
 import vMenu from '../menu/menu';
+import {mapState} from 'vuex';
 export default {
     name: 'v-header',
     components: {

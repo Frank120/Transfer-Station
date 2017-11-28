@@ -5,26 +5,26 @@
  * component : 路由的组件路径
  */
 
- const routers = [{
-     path: '/',
-     name: 'index',
-     component(resolve) {
+const routers = [{
+    path: '/',
+    name: 'index',
+    component(resolve) {
             require.ensure(['./App.vue'], () => {
                 resolve(require('./App.vue'));
-         });
-     },
+        });
+    },
 
-     children: [
+    children: [
 
-     ],
-
-     path: '/wecome',
-     name: 'wecome',
-     component(resolve) {
+    ]},
+    {
+    path: '/wecome',
+    name: 'wecome',
+    component(resolve) {
             require.ensure(['./components/wecome/wecome.vue'], () => {
                 resolve(require('./components/wecome/wecome.vue'));
             });
-     }
+    }
  }];
 
- export default routers;
+export default routers;

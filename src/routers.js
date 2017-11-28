@@ -9,8 +9,8 @@ const routers = [{
     path: '/',
     name: 'index',
     component(resolve) {
-            require.ensure(['./App.vue'], () => {
-                resolve(require('./App.vue'));
+        require.ensure(['./App.vue'], () => {
+            resolve(require('./App.vue'));
         });
     },
 
@@ -21,9 +21,9 @@ const routers = [{
     path: '/wecome',
     name: 'wecome',
     component(resolve) {
-            require.ensure(['./components/wecome/wecome.vue'], () => {
-                resolve(require('./components/wecome/wecome.vue'));
-            });
+        require.ensure(['./components/wecome/wecome.vue'], () => {
+            resolve(require('./components/wecome/wecome.vue'));
+        });
     }
  }];
 

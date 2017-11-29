@@ -5,7 +5,7 @@ import routes from './routers';
 import vueResource from 'vue-resource';
 import infiniteScroll from 'vue-infinite-scroll';
 import VueLazyload from 'vue-lazyload';
-import {loadFromLocal} from './common/js/store';
+import { loadFromlLocal } from './common/js/store';
 import 'common/css/index.styl';
 
 // register components
@@ -32,7 +32,7 @@ const routerApp = new Vue({
  * loadFromlLocal()是读取本地缓存数据，具体common/js/store.js 查看
  */
 
-if (!loadFromLocal('gank', 'wecome', false)) {
+if (!loadFromlLocal('gank', 'wecome', false)) {
     router.push('./wecome');
 }
 export default routerApp;

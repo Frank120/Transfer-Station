@@ -15,7 +15,15 @@ const routers = [{
     },
 
     children: [
-
+        {
+            path: '/welfare',
+            name: 'welfare',
+            component(resolve) {
+                require.ensure(['./components/welfare/welfare.vue'], () => {
+                    resolve(require('./components/welfare/welfare.vue'));
+                });
+            }
+        }
     ]},
     {
     path: '/wecome',

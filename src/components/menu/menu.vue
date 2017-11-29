@@ -31,37 +31,37 @@ import headUrl from '../../assets/head.png';
 import { mapState } from 'vuex';
 const MENU_CONVERT = { 'welfare': '福利', 'day': '每日推荐', 'ios': 'IOS', android: 'Android', web: '新品' };
 export default {
-      name: 'v-menu',
-      components: {
-        headUrl
-      },
-      props: {
-        show: {
-          type: Boolean
-        }
-      },
-      data() {
-        return {
-          MENU_CONVERT: MENU_CONVERT,
-          title: 'WU YAN ZU',
-          url: headUrl
-        };
-      },
-      computed: {
-        ...mapState([
-          'menus', 'news'
-        ])
-      },
-      methods: {
-        updateHeader(title, menu) {
-          this.$store.commit('UPDATE_TITLE', title);
-           this.$store.commit('UPDATE_MENUSHOW');
-           if (menu === 'day') {
-              this.$store.commit('UPDATE_NEWS');
-           }
-        }
-      }
+  name: 'v-menu',
+  components: {
+    headUrl
+  },
+  props: {
+    show: {
+      type: Boolean
+    }
+  },
+  data() {
+    return {
+      MENU_CONVERT: MENU_CONVERT,
+      title: 'WU YAN ZU',
+      url: headUrl
     };
+  },
+  computed: {
+    ...mapState([
+      'menus', 'news'
+    ])
+  },
+  methods: {
+    updateHeader(title, menu) {
+      this.$store.commit('UPDATE_TITLE', title);
+        this.$store.commit('UPDATE_MENUSHOW');
+        if (menu === 'day') {
+          this.$store.commit('UPDATE_NEWS');
+        }
+    }
+  }
+};
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">

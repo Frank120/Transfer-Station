@@ -55,10 +55,10 @@ export default {
   methods: {
     updateHeader(title, menu) {
       this.$store.commit('UPDATE_TITLE', title);
-        this.$store.commit('UPDATE_MENUSHOW');
-        if (menu === 'day') {
-          this.$store.commit('UPDATE_NEWS');
-        }
+      this.$store.commit('UPDATE_MENUSHOW');
+      if (menu === 'day') {
+        this.$store.commit('UPDATE_NEWS');
+      }
     }
   }
 };

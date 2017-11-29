@@ -2,6 +2,7 @@
     <div>
         <v-header></v-header>
         <loading :v-show="loadingShow"></loading>
+        <v-hero></v-hero>
         <router-view></router-view>
     </div>
 </template>
@@ -10,13 +11,15 @@
 import vMenu from './components/menu/menu.vue';
 import vHeader from './components/header/header.vue';
 import loading from './components/loading/loading';
+import vHero from './components/heromodule/hero';
 import { mapState } from 'vuex';
 export default {
     name: 'app',
     components: {
         vMenu,
         vHeader,
-        loading
+        loading,
+        vHero
     },
     data() {
         return {

@@ -2,7 +2,7 @@
     <div>
         <v-header></v-header>
         <loading :v-show="loadingShow"></loading>
-        <v-hero></v-hero>
+        <v-hero :v-show="heroShow"></v-hero>
         <router-view></router-view>
     </div>
 </template>
@@ -24,12 +24,14 @@ export default {
     data() {
         return {
             firstShow: true,
-            show: false
+            show: false,
+            hershow: false
         };
     },
     computed: {
         ...mapState([
-            'loadingShow'
+            'loadingShow',
+            'heroShow'
         ])
     },
     methods: {

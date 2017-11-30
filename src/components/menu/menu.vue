@@ -49,7 +49,7 @@ export default {
   },
   computed: {
     ...mapState([
-      'menus', 'news'
+      'menus', 'news', 'heroShow'
     ])
   },
   methods: {
@@ -59,6 +59,7 @@ export default {
       if (menu === 'day') {
         this.$store.commit('UPDATE_NEWS');
       }
+      this.$store.commit('UPDATE_HERO');
     }
   }
 };

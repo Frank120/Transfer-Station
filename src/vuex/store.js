@@ -11,7 +11,8 @@ const state = {
     'menus': uz.NAME_TITILE,
     'menuShow': false,
     'loadingShow': false,
-    'news': 7
+    'news': 7,
+    'heroShow': true
 };
 
 const mutations = {
@@ -27,6 +28,10 @@ const mutations = {
     },
     UPDATE_NEWS(state) {
         state.news = 0;
+    },
+    UPDATE_HERO(state) {
+        state.heroShow === true ? state.heroShow = !state.heroShow : false;
+        console.log(state.heroShow);
     }
 };
 

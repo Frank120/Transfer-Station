@@ -49,7 +49,7 @@ export default {
   },
   computed: {
     ...mapState([
-      'menus', 'news', 'heroShow'
+      'menus', 'news'
     ])
   },
   methods: {

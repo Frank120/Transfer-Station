@@ -1,5 +1,5 @@
 <template>
-    <div class="hero-module" v-show="showHero">{{ title }}</div>
+    <div class="hero-module">{{ title }}</div>
 </template>
 
 <script>

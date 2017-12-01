@@ -24,23 +24,25 @@ export default {
     data() {
         return {
             firstShow: true,
-            show: false,
-            hershow: false
+            show: false
         };
     },
     computed: {
         ...mapState([
             'loadingShow',
             'heroShow'
-        ])
+        ]),
+        heroShow: function () {
+            return this.$store.getters.heroShow;
+        }
     },
     methods: {
-        isShow() {
-            this.show = !this.show;
-        },
-        hideDetail() {
-            this.detaileShow = false;
-        }
+        // isShow() {
+        //     this.show = !this.show;
+        // },
+        // hideDetail() {
+        //     this.detaileShow = false;
+        // }
     }
 };
 </script>

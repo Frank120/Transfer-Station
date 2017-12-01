@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import * as actions from './actions';
-import * as getters from './getters';
+// import * as getters from './getters';
 import * as uz from '../common/js/uz';
 
 Vue.use(Vuex);
@@ -31,7 +31,12 @@ const mutations = {
     },
     UPDATE_HERO(state) {
         state.heroShow === true ? state.heroShow = !state.heroShow : false;
-        console.log(state.heroShow);
+        console.log(state.heroShow + ':  form store');
+    }
+};
+const getters = {
+    heroShow: function (state) {
+        return state.heroShow;
     }
 };
 

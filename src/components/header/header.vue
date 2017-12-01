@@ -42,11 +42,6 @@ export default {
         this.detailShow = false;
       }
     }
-//    vuex: {
-//      getters: {
-//        headerTitle: getHeaderTitle
-//      }
-//    }
   };
 </script>
 
